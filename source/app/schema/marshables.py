@@ -1476,7 +1476,7 @@ class DSFileSchema(ma.SQLAlchemyAutoSchema):
 
         if location is None:
             raise marshmallow.exceptions.ValidationError(
-                f"Unable to save file in target location",
+                "Unable to save file in target location",
                 field_name='file_content'
             )
 
