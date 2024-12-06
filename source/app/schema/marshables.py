@@ -1195,7 +1195,7 @@ class EventSchema(ma.SQLAlchemyAutoSchema):
         try:
             self.event_date = dateutil.parser.isoparse(date_time)
             self.event_date_wtz = dateutil.parser.isoparse(date_time_wtz)
-        except Exception as e:
+        except Exception:
             raise marshmallow.exceptions.ValidationError("Invalid date time", field_name="event_date")
 
         return self.event_date, self.event_date_wtz
