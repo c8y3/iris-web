@@ -48,7 +48,7 @@ from app.datamgmt.manage.manage_case_state_db import get_case_state_by_name
 from app.datamgmt.manage.manage_case_templates_db import get_case_template_by_id
 from app.datamgmt.manage.manage_case_templates_db import case_template_post_modifier
 from app.datamgmt.states import update_timeline_state
-from app.models import Cases
+from app.models.cases import Cases
 from app.models import EventCategory
 from app.models import Tags
 from app.models import AssetsType
