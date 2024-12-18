@@ -140,4 +140,17 @@ def shutdown_session(exception=None):
     db.session.remove()
 
 
-from app import views
+from app.views import register_blueprints
+
+register_blueprints(app)
+
+from app.post_init import run_post_init
+
+try:
+
+    run_post_init(development=app.config['DEVELOPMENT'])
+
+except Exception as e:
+    app.logger.exception('Post init failed. IRIS not started')
+    raise e
+
