@@ -17,7 +17,6 @@
 #  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
-from app import lm
 from app.blueprints.pages.activities.activities_routes import activities_blueprint
 from app.blueprints.pages.alerts.alerts_routes import alerts_blueprint
 from app.blueprints.pages.case.case_routes import case_blueprint
@@ -190,9 +189,7 @@ def register_blueprints(app):
     app.register_blueprint(api_v2_assets_blueprint)
     app.register_blueprint(api_v2_tasks_blueprint)
 
-
 # provide login manager with load_user callback
-@lm.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
@@ -208,7 +205,6 @@ def _get_user_by_api_key(api_key):
     ).first()
 
 
-@lm.request_loader
 def load_user_from_request(request):
     api_key_sources = [
         request.headers.get('X-IRIS-AUTH'),

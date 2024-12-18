@@ -141,6 +141,8 @@ def shutdown_session(exception=None):
 
 
 from app.views import register_blueprints
+from app.views import load_user
+from app.views import load_user_from_request
 
 register_blueprints(app)
 
@@ -154,3 +156,5 @@ except Exception as e:
     app.logger.exception('Post init failed. IRIS not started')
     raise e
 
+lm.user_loader(load_user)
+lm.request_loader(load_user_from_request)
